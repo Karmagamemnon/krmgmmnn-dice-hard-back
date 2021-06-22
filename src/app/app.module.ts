@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { DiceModule } from 'src/dice/dice.module';
+import { PlayerModule } from 'src/player/player.module';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 @Module({
@@ -16,6 +18,8 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
       autoLoadEntities: true,
       namingStrategy: new SnakeNamingStrategy(),
     }),
+    DiceModule,
+    PlayerModule,
   ],
   controllers: [],
   providers: [],
