@@ -1,3 +1,4 @@
+import { Unlocking } from "src/unlocking/unlocking.entity";
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany } from "typeorm";
 import { Dice } from "../dice/dice.entity";
 
@@ -31,8 +32,7 @@ export class Player {
     @OneToMany(() => Dice, dice => dice.creator)
     createdDices: Dice[];
 
-    @ManyToMany(() => Dice)
-    @JoinTable({ name: "player_unlocks_dices", })
-    unlockedDices: Dice[];
+    @OneToMany(() => Unlocking, unlocking => unlocking.player)
+    unlockings: Unlocking[];
 
 }

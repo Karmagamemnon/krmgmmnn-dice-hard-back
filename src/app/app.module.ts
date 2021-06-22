@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DiceModule } from 'src/dice/dice.module';
 import { PlayerModule } from 'src/player/player.module';
+import { UnlockingModule } from 'src/unlocking/unlocking.module';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 @Module({
@@ -20,6 +21,7 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
     }),
     DiceModule,
     PlayerModule,
+    UnlockingModule,
   ],
   controllers: [],
   providers: [],

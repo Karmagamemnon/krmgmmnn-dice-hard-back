@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { Player } from "../player/player.entity";
+import { Player } from "src/player/player.entity";
+import { Unlocking } from "src/unlocking/unlocking.entity";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from "typeorm";
 
 @Entity()
 export class Dice {
@@ -7,7 +8,7 @@ export class Dice {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @PrimaryGeneratedColumn()
+    @Column({ length: 255 })
     idBoardgame: string;
 
     @Column({ length: 255 })
@@ -21,5 +22,8 @@ export class Dice {
 
     @ManyToOne(() => Player, player => player.createdDices)
     creator: Player;
+
+    @OneToMany(() => Unlocking, unlocking => unlocking.dice)
+    unlockings: Unlocking[];
 
 }
